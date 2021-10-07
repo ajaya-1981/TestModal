@@ -47,7 +47,7 @@
 				if (event.origin.startsWith('http://localhost:3000')) {
 					// The data was sent from your site.
 					// Data sent with postMessage is stored in event.data:
-					console.log(event.data);
+					console.log('Data received from Dialler window: ' + event.data);
 				} else {
 					// The data was NOT sent from your site!
 					// Be careful! Do not use it. This else branch is
