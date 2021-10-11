@@ -60,3 +60,10 @@
 .space {
 	margin-left: 30px;
 }
+
+.modal-container {
+	position: absolute;
+	top: 50px;
+	right: -215px;
+}
+

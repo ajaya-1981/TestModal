@@ -11,11 +11,11 @@ function Landing() {
 	const [showPopup, setShowPopup] = useState(false);
 
 	const showModalWindow = () => {
-		setModalShow(true);
+		setModalShow(!modalShow);
 		//it will be replaced later with actual code
 		setTimeout(() => {
 			const diallerWindow = document.getElementById('dialler-window');
-			diallerWindow.contentWindow.postMessage(
+			diallerWindow && diallerWindow.contentWindow.postMessage(
 				{ agentId: '1' },
 				'http://localhost:3000'
 			);
@@ -43,6 +43,7 @@ function Landing() {
 				>
 					click me
 				</Button>
+				{modalShow && <ModalDialer show={modalShow} onHide={() => setModalShow(false)} />}
 			</div>
 			<div className='btn-group' role='group' aria-label='Third group'>
 				<Button
@@ -53,8 +54,6 @@ function Landing() {
 					test me
 				</Button>
 			</div>
-
-			<ModalDialer show={modalShow} onHide={() => setModalShow(false)} />
 
 			{showPopup ? (
 				<TestPopUp text='Close Me' closePopup={() => setShowPopup(false)} />

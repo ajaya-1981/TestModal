@@ -4,6 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.addEventListener('message', (event) => {
+  // IMPORTANT: check the origin of the data!
+  if (event.origin.startsWith('http://localhost:3000')) {
+    // The data was sent from your site.
+    // Data sent with postMessage is stored in event.data:
+    console.log('Data received from Dialler window: ' + event.data);
+    debugger;
+    if(event.data.connectedState) {
+      window.connectedState = event.data.connectedState;
+    }
+   
+  } else {
+    // The data was NOT sent from your site!
+    // Be careful! Do not use it. This else branch is
+    // here just for clarity, you usually shouldn't need it.
+    return;
+  }
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
