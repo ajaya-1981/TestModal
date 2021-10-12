@@ -15,10 +15,11 @@ function Landing() {
 		//it will be replaced later with actual code
 		setTimeout(() => {
 			const diallerWindow = document.getElementById('dialler-window');
-			diallerWindow && diallerWindow.contentWindow.postMessage(
-				{ agentId: '1' },
-				'http://localhost:3000'
-			);
+			diallerWindow &&
+				diallerWindow.contentWindow.postMessage(
+					{ agentId: '1800' },
+					'http://localhost:3000'
+				);
 			console.log('dialler window' + diallerWindow);
 		}, 3000);
 	};
@@ -43,7 +44,9 @@ function Landing() {
 				>
 					click me
 				</Button>
-				{modalShow && <ModalDialer show={modalShow} onHide={() => setModalShow(false)} />}
+				{modalShow && (
+					<ModalDialer show={modalShow} onHide={() => setModalShow(false)} />
+				)}
 			</div>
 			<div className='btn-group' role='group' aria-label='Third group'>
 				<Button

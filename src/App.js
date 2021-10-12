@@ -13,8 +13,8 @@ function App() {
 				onChange={(e) => setText(e.target.value)}
 				placeholder=''
 			></input>
-			{window.connectedState == 'Connecting' && <label>Connecting...</label>}
-			
+			{window.connectedState === 'Connecting' && <label>Connecting...</label>}
+
 			<Landing></Landing>
 		</div>
 	);
