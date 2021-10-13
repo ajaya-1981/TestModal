@@ -9,8 +9,8 @@ var adminToken;
 
 function Landing() {
 	const [modalShow, setModalShow] = useState(false);
-	const [showPopup, setShowPopup] = useState(false);
-	const [configID, setConfigId] = useState('');
+	//const [showPopup, setShowPopup] = useState(false);
+	const [configID, setConfigId] = useState(adminsettings[0].username);
 
 	// const onChange = () => {
 	// 	setConfigId();
@@ -18,18 +18,23 @@ function Landing() {
 	const showModalWindow = () => {
 		setModalShow(!modalShow);
 		console.log(configID);
-		const agentDetails = adminsettings.filter(
+		const agentDetails = adminsettings.find(
 			(item) => item.username === configID
 		);
-		console.log(agentDetails);
+		console.log('agentDetails : ' + JSON.stringify(agentDetails));
 		//it will be replaced later with actual code
 		setTimeout(() => {
 			const diallerWindow = document.getElementById('dialler-window');
 			diallerWindow &&
 				diallerWindow.contentWindow.postMessage(
 					{
-						agentId: agentDetails[0].username,
-						password: agentDetails[0].password,
+						hostname: agentDetails.hostname,
+						agentId: agentDetails.username,
+						password: agentDetails.password,
+						protocol: agentDetails.protocol,
+					    actionTimeout: agentDetails.actionTimeout,
+						reconnectInterval: agentDetails.reconnectInterval,
+						authmode: agentDetails.authmode
 					},
 					'http://localhost:3000'
 				);
@@ -73,7 +78,7 @@ function Landing() {
 				>
 					<i className='fa fa-phone'></i>
 				</button>
-				{modalShow && <ModalDialer show={modalShow} />}
+				{modalShow && <ModalDialer />}
 				{/* onHide={() => setModalShow(false)}  */}
 			</div>
 			{/* <div className='btn-group' role='group' aria-label='Third group'>

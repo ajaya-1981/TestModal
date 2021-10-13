@@ -10,7 +10,6 @@ window.addEventListener('message', (event) => {
 		// The data was sent from your site.
 		// Data sent with postMessage is stored in event.data:
 		console.log('Data received from Dialler window: ' + event.data);
-		debugger;
 		if (event.data.connectedState) {
 			window.connectedState = event.data.connectedState;
 		}
