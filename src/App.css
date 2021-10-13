@@ -66,4 +66,8 @@
 	top: 50px;
 	right: -215px;
 }
-
+.select {
+	width: 100px;
+	height: 25px;
+	font-family: 'Exo';
+}

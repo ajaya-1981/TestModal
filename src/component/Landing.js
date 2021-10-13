@@ -4,20 +4,33 @@ import ModalDialer from './ModalDialer';
 import TestPopUp from './TestPopUp';
 
 var md5 = require('md5');
+let adminsettings = require('../settings.json');
 var adminToken;
 
 function Landing() {
 	const [modalShow, setModalShow] = useState(false);
 	const [showPopup, setShowPopup] = useState(false);
+	const [configID, setConfigId] = useState('');
 
+	// const onChange = () => {
+	// 	setConfigId();
+	// };
 	const showModalWindow = () => {
 		setModalShow(!modalShow);
+		console.log(configID);
+		const agentDetails = adminsettings.filter(
+			(item) => item.username === configID
+		);
+		console.log(agentDetails);
 		//it will be replaced later with actual code
 		setTimeout(() => {
 			const diallerWindow = document.getElementById('dialler-window');
 			diallerWindow &&
 				diallerWindow.contentWindow.postMessage(
-					{ agentId: '1800' },
+					{
+						agentId: agentDetails[0].username,
+						password: agentDetails[0].password,
+					},
 					'http://localhost:3000'
 				);
 			console.log('dialler window' + diallerWindow);
@@ -26,7 +39,14 @@ function Landing() {
 
 	return (
 		<div>
-			<h1> Test Page</h1>
+			<h1> Agent Console</h1>
+			<select className='select' onChange={(e) => setConfigId(e.target.value)}>
+				{adminsettings.map((item) => (
+					<option key={item.username} value={item.username}>
+						{item.username}
+					</option>
+				))}
+			</select>
 			<div className='btn-group mr-2' role='group' aria-label='First group'>
 				<Button
 					className='space'
@@ -37,18 +57,26 @@ function Landing() {
 				</Button>
 			</div>
 			<div className='btn-group mr-2' role='group' aria-label='Second group'>
-				<Button
-					className='space'
-					variant='primary'
+				{
+					<Button
+						className='space'
+						variant='primary'
+						onClick={() => showModalWindow()}
+					>
+						click me
+					</Button>
+				}
+				<button
+					name='endcall'
+					className='btn btn-circle'
 					onClick={() => showModalWindow()}
 				>
-					click me
-				</Button>
-				{modalShow && (
-					<ModalDialer show={modalShow} onHide={() => setModalShow(false)} />
-				)}
+					<i className='fa fa-phone'></i>
+				</button>
+				{modalShow && <ModalDialer show={modalShow} />}
+				{/* onHide={() => setModalShow(false)}  */}
 			</div>
-			<div className='btn-group' role='group' aria-label='Third group'>
+			{/* <div className='btn-group' role='group' aria-label='Third group'>
 				<Button
 					className='space'
 					variant='primary'
@@ -56,11 +84,11 @@ function Landing() {
 				>
 					test me
 				</Button>
-			</div>
+			</div> */}
 
-			{showPopup ? (
+			{/* {showPopup ? (
 				<TestPopUp text='Close Me' closePopup={() => setShowPopup(false)} />
-			) : null}
+			) : null} */}
 		</div>
 	);
 }

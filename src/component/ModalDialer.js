@@ -12,9 +12,7 @@ function iframe() {
 function ModalDialer(props) {
 	return (
 		<div>
-
-		
-		{/* <Modal
+			{/* <Modal
 			{...props}
 			size='lg'
 			aria-labelledby='contained-modal-title-vcenter'
@@ -27,9 +25,9 @@ function ModalDialer(props) {
 			
 		</Modal> */}
 
-		<div class="modal-container" {...props}>
-			<div dangerouslySetInnerHTML={iframe()}></div>
-		</div>
+			<div className='modal-container' {...props}>
+				<div dangerouslySetInnerHTML={iframe()}></div>
+			</div>
 		</div>
 	);
 }
