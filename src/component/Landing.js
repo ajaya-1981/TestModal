@@ -62,24 +62,14 @@ function Landing() {
 				</Button>
 			</div>
 			<div className='btn-group mr-2' role='group' aria-label='Second group'>
-				{
-					<Button
-						className='space'
-						variant='primary'
-						onClick={() => showModalWindow()}
-					>
-						click me
-					</Button>
-				}
-				<button
+				<div
 					name='endcall'
-					className='btn btn-circle'
+					className='icon--phone'
 					onClick={() => showModalWindow()}
 				>
 					<i className='fa fa-phone'></i>
-				</button>
+				</div>
 				{modalShow && <ModalDialer />}
-				{/* onHide={() => setModalShow(false)}  */}
 			</div>
 			{/* <div className='btn-group' role='group' aria-label='Third group'>
 				<Button

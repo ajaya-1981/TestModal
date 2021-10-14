@@ -71,3 +71,13 @@
 	height: 25px;
 	font-family: 'Exo';
 }
+.icon--phone {
+	font-size: 30px;
+	margin-left: 20px;
+	cursor: pointer;
+	width:47px;
+	height: 47px;
+	border: 1px solid grey;
+	border-radius: 50%;
+	background-color: lightgray;
+}
