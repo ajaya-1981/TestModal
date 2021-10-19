@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
 
-var userid = '8002';
+// var userid = '8002';
 const frame =
 	'<iframe src="http://localhost:3000" id="dialler-window" width="540" height="630" scrolling="no"></iframe>';
 function iframe() {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import ModalDialer from './ModalDialer';
-import TestPopUp from './TestPopUp';
+// import TestPopUp from './TestPopUp';
 
 var md5 = require('md5');
 let adminsettings = require('../settings.json');
@@ -32,9 +32,9 @@ function Landing() {
 						agentId: agentDetails.username,
 						password: agentDetails.password,
 						protocol: agentDetails.protocol,
-					    actionTimeout: agentDetails.actionTimeout,
+						actionTimeout: agentDetails.actionTimeout,
 						reconnectInterval: agentDetails.reconnectInterval,
-						authmode: agentDetails.authmode
+						authmode: agentDetails.authmode,
 					},
 					'http://localhost:3000'
 				);

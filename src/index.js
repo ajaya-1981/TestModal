@@ -9,7 +9,9 @@ window.addEventListener('message', (event) => {
 	if (event.origin.startsWith('http://localhost:3000')) {
 		// The data was sent from your site.
 		// Data sent with postMessage is stored in event.data:
-		console.log('Data received from Dialler window: ' + event.data);
+		console.log(
+			'Data received from Dialler window: ' + JSON.stringify(event.data)
+		);
 		if (event.data.connectedState) {
 			window.connectedState = event.data.connectedState;
 		}
